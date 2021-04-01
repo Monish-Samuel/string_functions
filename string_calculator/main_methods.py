@@ -35,3 +35,7 @@ def palindrome_or_not(sentence):
     else:
         return 'Its Not a Palindrome'
 
+
+def capitalize_string(sentence):
+    r = sentence.upper()
+    return r

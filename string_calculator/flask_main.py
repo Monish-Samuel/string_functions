@@ -17,7 +17,8 @@ def run_code():
     matching = main_methods.matching_char(string, char)
     palin = main_methods.palindrome_or_not(string)
     rever = main_methods.reverse(string)
-    return render_template('pass.html', l=leng, m=matching, p=palin, r=rever)
+    caps = main_methods.capitalize_string(string)
+    return render_template('pass.html', l=leng, m=matching, p=palin, r=rever, c=caps)
 
 
 if __name__ == '__main__':

@@ -30,6 +30,10 @@ class AlphaCheck(unittest.TestCase):
         palinsent2 = main_methods.palindrome_or_not('Race car')
         self.assertEqual(palinsent2, "Its a Palindrome")
 
+    def test_capitalize_string(self):
+        uppercase = main_methods.capitalize_string('New to India')
+        self.assertEqual(uppercase, 'NEW TO INDIA')
+
 
 if __name__ == '__main__':
     unittest.main()
