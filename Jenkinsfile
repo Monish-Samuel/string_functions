@@ -12,14 +12,21 @@ pipeline {
                 bat 'python string_calculator/test_main_methods.py'
             }
         }
+        stage('Prep Stage'){
+            steps{
+                powershell 'docker kill $(docker ps -q)'
+                powershell 'docker rm $(docker ps -a -q)'
+                powershell 'docker rmi $(docker images -q)'
+            }
+        }
         stage('Docker Image Build'){
             steps{
                 bat 'docker build -t string_calculator .'
             }
         }
-        stage('Docker Hub image'){
+        stage('Docker Image Build'){
             steps{
-                powershell 'docker tag string_calculator:latest string_calculator:${BUILD_NUMBER}'
+                powershell 'docker run -d -p 8096:5000 --rm --name mypythonContainer string_calculator:latest'
             }
         }
     }
