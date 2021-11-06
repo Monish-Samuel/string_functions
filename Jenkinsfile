@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Docker Hub image'){
             steps{
-                bat 'docker tag string_calculator:latest monish7/string_calculator'
+                bat 'docker tag string_calculator:latest string_calculator:BUILD_NUMBER'
             }
         }
     }
