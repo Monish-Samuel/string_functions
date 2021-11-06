@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Prep Stage'){
             steps{
-                powershell 'docker kill $(docker ps -q)'
+                powershell 'docker ps -q | % { docker stop $_ }'
                 powershell 'docker rm $(docker ps -a -q)'
                 powershell 'docker rmi $(docker images -q)'
             }
