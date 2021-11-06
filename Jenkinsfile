@@ -24,7 +24,7 @@ pipeline {
                 bat 'docker build -t string_calculator .'
             }
         }
-        stage('Docker Image Build'){
+        stage('Start Application'){
             steps{
                 powershell 'docker run -d -p 8096:5000 --rm --name mypythonContainer string_calculator:latest'
             }
