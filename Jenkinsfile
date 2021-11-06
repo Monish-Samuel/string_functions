@@ -20,7 +20,6 @@ pipeline {
         stage('Prep Stage'){
             steps{
                 powershell 'docker ps -q | % { docker stop $_ }'
-                powershell 'docker rm $(docker ps -a -q)'
             }
         }
         stage('Start Application'){
