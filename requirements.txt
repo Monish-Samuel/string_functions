@@ -1,3 +1,6 @@
+ndg-httpsclient
+pyopenssl
+pyasn1
 aniso8601
 click
 Flask
