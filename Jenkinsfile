@@ -12,16 +12,15 @@ pipeline {
                 bat 'python string_calculator/test_main_methods.py'
             }
         }
+        stage('Docker Image Build'){
+            steps{
+                bat 'docker build -t string_calculator .'
+            }
+        }
         stage('Prep Stage'){
             steps{
                 powershell 'docker ps -q | % { docker stop $_ }'
                 powershell 'docker rm $(docker ps -a -q)'
-                powershell 'docker rmi $(docker images -q)'
-            }
-        }
-        stage('Docker Image Build'){
-            steps{
-                bat 'docker build -t string_calculator .'
             }
         }
         stage('Start Application'){
