@@ -17,12 +17,12 @@ pipeline {
                 bat 'docker build -t string_calculator .'
             }
         }
-        stage('Prep Stage'){
-            steps{
-                powershell 'docker ps -q | % { docker stop $_ }'
-                powershell 'docker rm $(docker ps -a -q)'
-            }
-        }
+//         stage('Prep Stage'){
+//             steps{
+//                 powershell 'docker ps -q | % { docker stop $_ }'
+//                 powershell 'docker rm $(docker ps -a -q)'
+//             }
+//         }
         stage('Start Application'){
             steps{
                 powershell 'docker run -d -p 8096:5000 --rm --name mypythonContainer string_calculator:latest'
