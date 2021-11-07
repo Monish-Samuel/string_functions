@@ -17,14 +17,11 @@ pipeline {
                 sh 'docker build -t string_calculator .'
             }
         }
-//         stage('Prep Stage'){
-//             steps{
-//                 powershell 'docker ps -q | % { docker stop $_ }'
-//             }
-//         }
         stage('Start Application'){
             steps{
-                script{
+                sh 'docker ps -f name=mypythonContainer -q | xargs --no-run-if-empty docker container stop'
+                sh 'docker container ls -a -fname=mypythonContainer -q | xargs -r docker container rm'
+                script {
                     sh 'docker run -d -p 8096:5000 --rm --name mypythonContainer string_calculator:latest'
                 }
             }
