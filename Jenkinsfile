@@ -4,12 +4,12 @@ pipeline {
     stages {        
         stage('Compiling Stage'){
             steps{
-                sh 'python string_calculator/main_methods.py'
+                sh 'python3 string_calculator/main_methods.py'
             }
         }
         stage('Testing Stage'){
             steps{
-                sh 'python string_calculator/test_main_methods.py'
+                sh 'python3 string_calculator/test_main_methods.py'
             }
         }
         stage('Docker Image Build'){
